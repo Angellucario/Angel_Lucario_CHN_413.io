@@ -1,0 +1,769 @@
+/* Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.7;
+    background: #b0c3e9;
+    color: #1f2933;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  h1, h2, h3 {
+    font-weight: 600;
+    color: #102a43;
+  }
+  
+  p {
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  
+  /* Navbar */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(245, 247, 251, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #d8e2ec;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.98rem;
+  }
+  
+  .nav-links a {
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  
+  .nav-links a:hover {
+    background: #dceefb;
+    color: #102a43;
+  }
+  
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+    padding: 3rem 0 2.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: #52606d;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #dceefb;
+    color: #102a43;
+    margin-bottom: 0.6rem;
+  }
+  
+  .hero-section-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .hero-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+  }
+  
+  .hero-btn-primary {
+    background: #3e8eec;
+    color: #fff;
+    box-shadow: 0 10px 18px rgba(62, 142, 236, 0.28);
+  }
+  
+  .hero-btn-primary:hover {
+    background: #2f7ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 20px rgba(62, 142, 236, 0.33);
+  }
+  
+  .hero-btn-ghost {
+    background: #e4edf7;
+    color: #102a43;
+  }
+  
+  .hero-btn-ghost:hover {
+    background: #d1e2f5;
+    transform: translateY(-1px);
+  }
+  
+  /* Turbine */
+  .turbine-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .turbine-card {
+    background: linear-gradient(135deg, #dceefb 0%, #f5f7fb 75%);
+    border-radius: 1.25rem;
+    padding: 1.8rem 1.4rem;
+    box-shadow: 0 12px 25px rgba(15, 52, 96, 0.12);
+    width: 100%;
+    max-width: 360px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .turbine-label {
+    font-size: 0.9rem;
+    color: #52606d;
+    margin-bottom: 0.4rem;
+  }
+  
+  .sky {
+    background: linear-gradient(180deg, #b3e6ff, #e0f4ff);
+    border-radius: 1rem;
+    padding: 1.4rem 1rem 0.8rem;
+    position: relative;
+    height: 230px;
+  }
+  
+  .ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    background: linear-gradient(180deg, #5cb85c, #3d8b3d);
+    border-radius: 0 0 1rem 1rem;
+  }
+  
+  .hill {
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+    right: -10%;
+    height: 70px;
+    background: radial-gradient(circle at 20% 0, #80c980 0, #3d8b3d 60%);
+    opacity: 0.9;
+  }
+  
+  /* Moving wind lines */
+  .wind-line {
+    position: absolute;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+    animation: wind-move 4s linear infinite;
+  }
+  
+  .wind-line:nth-child(1) {
+    top: 38px;
+    left: -40%;
+    width: 35%;
+    animation-delay: 0s;
+  }
+  
+  .wind-line:nth-child(2) {
+    top: 70px;
+    left: -50%;
+    width: 45%;
+    animation-delay: 0.7s;
+  }
+  
+  .wind-line:nth-child(3) {
+    top: 110px;
+    left: -30%;
+    width: 30%;
+    animation-delay: 1.4s;
+  }
+  
+  @keyframes wind-move {
+    0% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    80% {
+      transform: translateX(260%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(280%);
+      opacity: 0;
+    }
+  }
+  
+  /* Turbine structure */
+  .turbine {
+    position: absolute;
+    bottom: 53px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .tower {
+    width: 10px;
+    height: 115px;
+    background: linear-gradient(180deg, #f7fafc, #cbd2e1);
+    border-radius: 999px 999px 0 0;
+    box-shadow: 0 0 8px rgba(15, 52, 96, 0.15);
+  }
+  
+  .nacelle {
+    position: absolute;
+    top: -16px;
+    width: 40px;
+    height: 18px;
+    background: #f7fafc;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(15, 52, 96, 0.25);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hub {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    background: #e3e8f0;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px rgba(15, 52, 96, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .blades {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    animation: spin 2.5s linear infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .blade {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 30px;
+    background: #f7fafc;
+    border-radius: 999px;
+    transform-origin: center bottom;
+    box-shadow: 0 1px 3px rgba(15, 52, 96, 0.25);
+  }
+  
+  .blade:nth-child(1) {
+    transform: translate(-50%, -100%) rotate(0deg);
+  }
+  
+  .blade:nth-child(2) {
+    transform: translate(-50%, -100%) rotate(120deg);
+  }
+  
+  .blade:nth-child(3) {
+    transform: translate(-50%, -100%) rotate(240deg);
+  }
+  
+  .turbine-caption {
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    color: #52606d;
+    text-align: center;
+  }
+  
+  /* Sections */
+  section {
+    padding: 2.2rem 0;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .paragraph-block {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.4rem 1.3rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 10px 20px rgba(15, 52, 96, 0.06);
+  }
+  
+  .cn {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .en {
+    font-size: 0.95rem;
+    color: #616e7c;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.6rem;
+    border: 1px solid #cbd2e1;
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+  }
+  
+  /* Footer */
+  footer {
+    border-top: 1px solid #d8e2ec;
+    padding: 1.2rem 0;
+    font-size: 0.85rem;
+    color: #8a9ba8;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 880px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .hero-title {
+      font-size: 1.6rem;
+    }
+  }
+  
+  /* ===== "What Is Wind Energy" Animated Layout ===== */
+.intro-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 1.8rem;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+.intro-visual {
+  background: linear-gradient(145deg, #dceefb 0%, #f5f7fb 60%);
+  border-radius: 1rem;
+  padding: 1.1rem 1rem 1.2rem;
+  box-shadow: 0 12px 22px rgba(15, 52, 96, 0.08);
+}
+
+.intro-sky-strip {
+  position: relative;
+  height: 160px;
+  border-radius: 0.9rem;
+  background: linear-gradient(180deg, #b3e6ff, #e0f4ff);
+  overflow: hidden;
+}
+
+/* sun */
+.intro-sun {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #ffeaa7 0, #f1c40f 60%, #e1ad0a 100%);
+  box-shadow: 0 0 18px rgba(241, 196, 15, 0.9);
+  animation: sun-glow 4s ease-in-out infinite;
+}
+
+@keyframes sun-glow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(241, 196, 15, 0.7);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 22px rgba(241, 196, 15, 0.95);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(241, 196, 15, 0.7);
+  }
+}
+
+/* clouds */
+.intro-cloud {
+  position: absolute;
+  width: 70px;
+  height: 26px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(15, 52, 96, 0.15);
+}
+
+.intro-cloud::before,
+.intro-cloud::after {
+  content: "";
+  position: absolute;
+  background: #ffffff;
+  border-radius: 999px;
+}
+
+.intro-cloud::before {
+  width: 32px;
+  height: 32px;
+  left: 8px;
+  top: -10px;
+}
+
+.intro-cloud::after {
+  width: 26px;
+  height: 26px;
+  right: 8px;
+  top: -8px;
+}
+
+.intro-cloud-1 {
+  top: 30px;
+  left: -80px;
+  animation: cloud-drift-1 18s linear infinite;
+}
+
+.intro-cloud-2 {
+  top: 70px;
+  left: -120px;
+  animation: cloud-drift-2 24s linear infinite;
+}
+
+@keyframes cloud-drift-1 {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(260px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(290px);
+    opacity: 0;
+  }
+}
+
+@keyframes cloud-drift-2 {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(320px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(360px);
+    opacity: 0;
+  }
+}
+
+/* air flow lines */
+.intro-air {
+  position: absolute;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  animation: intro-air-move 5.2s linear infinite;
+}
+
+.intro-air-1 {
+  top: 110px;
+  left: -40px;
+  width: 60px;
+  animation-delay: 0.3s;
+}
+
+.intro-air-2 {
+  top: 125px;
+  left: -60px;
+  width: 80px;
+  animation-delay: 1.4s;
+}
+
+.intro-air-3 {
+  top: 140px;
+  left: -50px;
+  width: 70px;
+  animation-delay: 2.3s;
+}
+
+@keyframes intro-air-move {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(260px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(290px);
+    opacity: 0;
+  }
+}
+
+.intro-caption {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #52606d;
+  text-align: center;
+}
+
+/* text block in intro layout */
+.intro-text {
+  margin: 0;
+}
+
+/* responsive layout for small screens */
+@media (max-width: 880px) {
+  .intro-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* section header + badge */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.section-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(148,163,184,0.6);
+  color: #4b5563;
+}
+
+/* badge colors */
+.badge-blue { border-color:#60a5fa; background:rgba(96,165,250,0.12); color:#1d4ed8; }
+.badge-green { border-color:#22c55e; background:rgba(34,197,94,0.14); color:#166534; }
+.badge-yellow { border-color:#facc15; background:rgba(250,204,21,0.16); color:#854d0e; }
+.badge-purple { border-color:#a855f7; background:rgba(168,85,247,0.14); color:#6b21a8; }
+.badge-red { border-color:#f97373; background:rgba(248,113,113,0.16); color:#b91c1c; }
+
+/* light alt background for some sections */
+.alt-section {
+  background: radial-gradient(circle at top left, rgba(239,246,255,0.9), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(219,234,254,0.7), transparent 55%);
+}
+
+/* card style around paragraphs */
+.card {
+  background:#ffffff;
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 10px 24px rgba(15,23,42,0.08);
+  border: 1px solid rgba(148,163,184,0.4);
+}
+
+/* simple grid with info cards */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.info-card {
+  background:#ffffff;
+  border-radius: 0.9rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(148,163,184,0.45);
+  box-shadow: 0 6px 16px rgba(15,23,42,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(15,23,42,0.12);
+}
+
+/* softer background for some cards */
+.soft-card {
+  background: linear-gradient(135deg,#e0f2fe,#f5f7fb);
+}
+
+/* icon circles */
+.icon-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  background:#e5e7eb;
+}
+
+.icon-green { background:#bbf7d0; }
+.icon-blue { background:#bfdbfe; }
+.icon-orange { background:#fed7aa; }
+
+/* make sure CN + EN paragraphs stay readable */
+p.cn, p.en {
+  margin-bottom: 0.4rem;
+  line-height: 1.55;
+  font-size: 0.98rem;
+}
+/* Center animation */
+.animation-center {
+  text-align: center;
+}
+
+/* Wind turbine shape */
+.turbine {
+  position: relative;
+  width: 140px;
+  height: 260px;
+  margin: 20px auto;
+}
+
+/* Tower */
+.tower {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 14px;
+  height: 170px;
+  background: #cbd5e1;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+/* top generator box */
+.nacelle {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 28px;
+  height: 18px;
+  background: #ffffff;
+  border: 2px solid #94a3b8;
+  transform: translateX(-50%);
+  border-radius: 6px;
+}
+
+/* blades */
+.blade {
+  position: absolute;
+  width: 6px;
+  height: 75px;
+  background: #e2e8f0;
+  left: 50%;
+  top: 68px;
+  transform-origin: bottom center;
+  border-radius: 5px;
+}
+
+/* Blade positions (spread like a fan) */
+.blade1 { transform: translateX(-50%) rotate(0deg); }
+.blade2 { transform: translateX(-50%) rotate(120deg); }
+.blade3 { transform: translateX(-50%) rotate(240deg); }
+
+/* Animation - slow spin */
+.turbine:hover .blade {
+  animation: spin 2.8s linear infinite;
+}
+
+/* always spin slowly (not too fast) */
+.turbine .blade {
+  animation: spin 7s linear infinite;
+}
+
+/* spinning keyframes */
+@keyframes spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* small text formatting */
+.small {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
