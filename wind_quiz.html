@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <title>风能小测验 | Wind Energy Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Nav (same as other pages) -->
+  <header>
+    <div class="container nav">
+      <div>
+        <img src="logo_wind_energy.png" alt="Wind Energy Logo" style="width:80px;height:80px;">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">首页 Home</a>
+        <a href="wind.html">风能介绍</a>
+        <a href="examples.html">风能案例 Examples</a>
+        <a href="contact.html">联系 Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="wind-animation" class="alt-section">
+      <div class="container animation-center">
+        <div class="section-header" style="align-items:center;">
+          <span class="section-badge badge-green">小测验 · Quiz</span>
+          <h2 class="section-title">风场问题 · Wind Farm Questions</h2>
+        </div>
+
+        <p class="small">
+          看着风电场在风中转动，问题会像被风吹走一样从屏幕上飘过。<br>
+          Watch the wind farm spin — the questions will blow across the screen like the wind.
+        </p>
+
+        <!-- Wind farm animation (reusing your existing CSS) -->
+        <div class="wind-farm">
+          <!-- moving wind lines -->
+          <div class="farm-wind-line line1"></div>
+          <div class="farm-wind-line line2"></div>
+          <div class="farm-wind-line line3"></div>
+
+          <!-- Big center turbine -->
+          <div class="simple-turbine turbine-big">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+
+          <!-- Smaller turbines -->
+          <div class="simple-turbine turbine-small">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+
+          <div class="simple-turbine turbine-small">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+
+          <div class="simple-turbine turbine-small">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blowing questions -->
+        <div class="blowing-questions">
+          <div class="blowing-question q1">
+            <span class="cn">
+              问题一：哪个风电场是“海上风电场”？A. 甘肃瓜州 B. Altamont Pass C. Middelgrunden
+            </span>
+            <span class="en">
+              Question 1: Which wind farm is offshore? A. Gansu Guazhou B. Altamont Pass C. Middelgrunden
+            </span>
+          </div>
+
+          <div class="blowing-question q2">
+            <span class="cn">
+              问题二：为什么风能被认为是“干净”的能源？A. 风机很小 B. 不排放污染气体 C. 只在晚上吹
+            </span>
+            <span class="en">
+              Question 2: Why is wind energy “clean”? A. Turbines are small B. No air-polluting gases C. Wind only blows at night
+            </span>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top:1.6rem;">
+          提示：答案可以在“风能介绍”和“风能案例”页面中找到。<br>
+          Hint: You can find the answers on the Wind Energy Info and Examples pages.
+        </p>
+
+        <div style="margin-top:1.2rem;">
+          <a href="examples.html" class="hero-btn hero-btn-ghost">
+            ⬅ 返回风能案例 · Back to Examples
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    风能学习网页 · Wind Energy Learning Page
+  </footer>
+</body>
+</html>
