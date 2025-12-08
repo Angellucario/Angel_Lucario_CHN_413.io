@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <title>风能小考试 | Wind Energy Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Extra quiz styles -->
+  <style>
+    .quiz-wrapper {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: left;
+    }
+
+    .quiz-card {
+      background: #f5f7fb;
+      border-radius: 1.1rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid #d8e2ec;
+      box-shadow: 0 10px 20px rgba(15, 52, 96, 0.10);
+    }
+
+    .quiz-question {
+      margin-bottom: 1.4rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.8rem;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+
+    .quiz-question p {
+      margin-bottom: 0.35rem;
+    }
+
+    .quiz-options label {
+      display: block;
+      font-size: 0.95rem;
+      margin: 0.15rem 0;
+      cursor: pointer;
+    }
+
+    .quiz-options input {
+      margin-right: 0.3rem;
+    }
+
+    .feedback {
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .correct {
+      background: #ecfdf3;
+      border-color: #16a34a;
+    }
+
+    .correct .feedback {
+      color: #15803d;
+      font-weight: 500;
+    }
+
+    .incorrect {
+      background: #fef2f2;
+      border-color: #dc2626;
+    }
+
+    .incorrect .feedback {
+      color: #b91c1c;
+      font-weight: 500;
+    }
+
+    #quiz-result {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    #reset-btn {
+      margin-left: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav (same as other pages) -->
+  <header>
+    <div class="container nav">
+      <div>
+        <img src="logo_wind_energy.png" alt="Wind Energy Logo" style="width:80px;height:80px;">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">首页 Home</a>
+        <a href="wind.html">风能介绍</a>
+        <a href="examples.html">风能案例 Examples</a>
+        <a href="contact.html">联系 Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="wind-animation" class="alt-section">
+      <div class="container animation-center">
+        <div class="section-header" style="align-items:center;">
+          <span class="section-badge badge-green">小测验 · Quiz</span>
+          <h2 class="section-title">风能理解检查 · Wind Energy Check</h2>
+        </div>
+
+        <p class="small">
+          先看“风能介绍”和“风能案例”页面，然后来做这个五题小测验。<br>
+          Read the Wind Energy Info and Examples pages, then try this 5-question quiz.
+        </p>
+
+        <!-- Wind farm animation (same style as other pages) -->
+        <div class="wind-farm">
+          <!-- moving wind lines -->
+          <div class="farm-wind-line line1"></div>
+          <div class="farm-wind-line line2"></div>
+          <div class="farm-wind-line line3"></div>
+
+          <!-- Big center turbine -->
+          <div class="simple-turbine turbine-big">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+
+          <!-- Smaller turbines -->
+          <div class="simple-turbine turbine-small">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+
+          <div class="simple-turbine turbine-small">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+
+          <div class="simple-turbine turbine-small">
+            <div class="simple-tower"></div>
+            <div class="simple-nacelle"></div>
+            <div class="simple-blades">
+              <div class="simple-blade simple-blade1"></div>
+              <div class="simple-blade simple-blade2"></div>
+              <div class="simple-blade simple-blade3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUIZ FORM -->
+        <div class="quiz-wrapper">
+          <form id="quiz-form" class="quiz-card">
+            <!-- Q1 -->
+            <div class="quiz-question" id="q1-block">
+              <p class="cn"><strong>问题一：</strong> 风是怎样形成的？</p>
+              <p class="en">Question 1: How is wind formed?</p>
+              <div class="quiz-options">
+                <label>
+                  <input type="radio" name="q1" value="a" />
+                  A. 汽车在路上跑产生的空气 / Air from cars on the road
+                </label>
+                <label>
+                  <input type="radio" name="q1" value="b" />
+                  B. 太阳不平均地加热陆地和海洋，让空气流动 / Uneven heating of land and ocean by the sun, causing air to move
+                </label>
+                <label>
+                  <input type="radio" name="q1" value="c" />
+                  C. 月亮的引力 / The Moon’s gravity
+                </label>
+              </div>
+              <div class="feedback" id="q1-feedback"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-question" id="q2-block">
+              <p class="cn"><strong>问题二：</strong> 为什么风能被叫做“可再生能源”？</p>
+              <p class="en">Question 2: Why is wind energy called a renewable energy source?</p>
+              <div class="quiz-options">
+                <label>
+                  <input type="radio" name="q2" value="a" />
+                  A. 因为风机只能用一次 / Turbines can only be used once
+                </label>
+                <label>
+                  <input type="radio" name="q2" value="b" />
+                  B. 因为风会用完，只能用几年 / Wind will be used up after a few years
+                </label>
+                <label>
+                  <input type="radio" name="q2" value="c" />
+                  C. 因为只要太阳还照地球，风就会一直存在 / As long as the sun heats the Earth, wind will keep existing
+                </label>
+              </div>
+              <div class="feedback" id="q2-feedback"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-question" id="q3-block">
+              <p class="cn"><strong>问题三：</strong> 哪一个风电场是“海上风电场”？</p>
+              <p class="en">Question 3: Which wind farm is an offshore wind farm?</p>
+              <div class="quiz-options">
+                <label>
+                  <input type="radio" name="q3" value="a" />
+                  A. 中国甘肃瓜州风电场 · Guazhou Wind Farm, China
+                </label>
+                <label>
+                  <input type="radio" name="q3" value="b" />
+                  B. 美国加州 Altamont Pass 风电场 · Altamont Pass, California
+                </label>
+                <label>
+                  <input type="radio" name="q3" value="c" />
+                  C. 丹麦 Middelgrunden 风电场 · Middelgrunden, Denmark
+                </label>
+              </div>
+              <div class="feedback" id="q3-feedback"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-question" id="q4-block">
+              <p class="cn"><strong>问题四：</strong> 下列哪一项是风能的一个好处？</p>
+              <p class="en">Question 4: Which of the following is a benefit of wind energy?</p>
+              <div class="quiz-options">
+                <label>
+                  <input type="radio" name="q4" value="a" />
+                  A. 发电时不排放污染空气的气体 / It produces no air-polluting gases while generating electricity
+                </label>
+                <label>
+                  <input type="radio" name="q4" value="b" />
+                  B. 风机可以自己产生石油 / Turbines can create their own oil
+                </label>
+                <label>
+                  <input type="radio" name="q4" value="c" />
+                  C. 风能会让空气变更脏 / Wind energy makes the air dirtier
+                </label>
+              </div>
+              <div class="feedback" id="q4-feedback"></div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-question" id="q5-block">
+              <p class="cn"><strong>问题五：</strong> 下列哪一项是风能面临的挑战？</p>
+              <p class="en">Question 5: Which of the following is a challenge or problem for wind energy?</p>
+              <div class="quiz-options">
+                <label>
+                  <input type="radio" name="q5" value="a" />
+                  A. 有些地方风不够大或不稳定，发电不太稳定 / In some places wind is weak or not stable, so power can be inconsistent
+                </label>
+                <label>
+                  <input type="radio" name="q5" value="b" />
+                  B. 风机一点声音都没有，也不占任何空间 / Turbines make zero sound and take up no space
+                </label>
+                <label>
+                  <input type="radio" name="q5" value="c" />
+                  C. 用风能一定会让国家更依赖石油 / Using wind always makes a country depend more on oil
+                </label>
+              </div>
+              <div class="feedback" id="q5-feedback"></div>
+            </div>
+
+            <div style="text-align:center; margin-top:1.1rem;">
+              <button type="submit" class="hero-btn hero-btn-primary">
+                提交答案 · Submit Answers
+              </button>
+              <button type="button" id="reset-btn" class="hero-btn hero-btn-ghost">
+                重做一次 · Reset
+              </button>
+            </div>
+
+            <div id="quiz-result"></div>
+          </form>
+        </div>
+
+        <div style="margin-top:1.2rem;">
+          <a href="examples.html" class="hero-btn hero-btn-ghost">
+            ⬅ 返回风能案例 · Back to Examples
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    风能学习网页 · Wind Energy Learning Page
+  </footer>
+
+  <!-- Simple quiz logic -->
+  <script>
+    const correctAnswers = {
+      q1: "b",
+      q2: "c",
+      q3: "c",
+      q4: "a",
+      q5: "a"
+    };
+
+    const feedbackText = {
+      q1: "正确答案是 B：太阳不平均地加热陆地和海洋，让空气流动。Wind is caused by uneven heating of land and ocean by the sun.",
+      q2: "正确答案是 C：只要太阳还在照地球，风就会一直存在，所以风能不会用完。",
+      q3: "正确答案是 C：Middelgrunden 是海上风电场，在丹麦哥本哈根附近的海上。",
+      q4: "正确答案是 A：用风发电时不会排放污染空气的气体。",
+      q5: "正确答案是 A：有些地方风不够强或不稳定，所以发电不稳定，这是一个挑战。"
+    };
+
+    document.getElementById("quiz-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let total = 5;
+      let score = 0;
+
+      // Clear old styles
+      for (let i = 1; i <= total; i++) {
+        const block = document.getElementById(`q${i}-block`);
+        block.classList.remove("correct", "incorrect");
+        document.getElementById(`q${i}-feedback`).textContent = "";
+      }
+
+      // Check each question
+      for (let i = 1; i <= total; i++) {
+        const name = `q${i}`;
+        const block = document.getElementById(`${name}-block`);
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        const feedback = document.getElementById(`${name}-feedback`);
+
+        if (selected && selected.value === correctAnswers[name]) {
+          score++;
+          block.classList.add("correct");
+          feedback.textContent = "✅ 正确！Correct!";
+        } else {
+          block.classList.add("incorrect");
+          feedback.textContent = "❌ 不太对。 " + feedbackText[name];
+        }
+      }
+
+      const percent = Math.round((score / total) * 100);
+      const result = document.getElementById("quiz-result");
+      result.textContent = `你得了 ${score} / ${total} 题，${percent}% · You scored ${score} out of ${total} (${percent}%).`;
+    });
+
+    document.getElementById("reset-btn").addEventListener("click", function () {
+      const form = document.getElementById("quiz-form");
+      form.reset();
+      for (let i = 1; i <= 5; i++) {
+        const block = document.getElementById(`q${i}-block`);
+        block.classList.remove("correct", "incorrect");
+        document.getElementById(`q${i}-feedback`).textContent = "";
+      }
+      document.getElementById("quiz-result").textContent = "";
+    });
+  </script>
+</body>
+</html>
